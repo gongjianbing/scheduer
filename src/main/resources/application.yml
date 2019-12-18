@@ -1,0 +1,59 @@
+# Tomcat
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+  port: 8090
+  connection-timeout: 5000ms
+  servlet:
+    context-path: /
+
+spring:
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+      enabled: true
+  freemarker:
+    suffix: .html
+    request-context-attribute: request
+  resources:
+    static-locations: classpath:/statics/,classpath:/templates/
+  devtools:
+    restart:
+      enabled: true
+      exclude: statics/**
+  http:
+    encoding:
+      force: true
+  mvc:
+    favicon:
+      enabled: false
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/gong?serverTimezone=GMT
+    username: root
+    password: root
+  mail:
+    host: smtp.qq.com
+    username: 813698205@qq.com
+    password: ebxjvyvaqnvrbceb
+    protocol: smtp
+    port: 465
+    properties.mail.smtp.port: 465
+    properties.mail.smtp.auth: false
+    properties.mail.smtp.ssl.enable: true
+    properties.mail.smtp.starttls.enable: true
+    properties.mail.smtp.starttls.required: true
+    default-encoding: utf-8
+#Mybatis
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
+  typeAliasesPackage: com.entity
+  configuration:
+    map-underscore-to-camel-case: true
+
